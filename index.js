@@ -23,7 +23,7 @@ const pool = mysql.createPool({
     user: 'root',
     password: '',
     database: 'gorylapi',
-    connectionLimit: 10 // just a guess lol
+    connectionLimit: 10, // just a guess lol
     connectionLimit : 1000,
     connectTimeout  : 60 * 60 * 1000,
     acquireTimeout  : 60 * 60 * 1000,
