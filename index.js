@@ -24,6 +24,10 @@ const pool = mysql.createPool({
     password: '',
     database: 'gorylapi',
     connectionLimit: 10 // just a guess lol
+    connectionLimit : 1000,
+    connectTimeout  : 60 * 60 * 1000,
+    acquireTimeout  : 60 * 60 * 1000,
+    timeout         : 60 * 60 * 1000,
 });
 
 // check the connection
@@ -44,7 +48,7 @@ function checkTime(getQuote) {
     (function loop() {
         var now = new Date();
         // set the time at which the quote will be picked here
-        if (now.getHours() === 0 && now.getMinutes() === 0 && now.getSeconds() === 0) {
+        if (now.getHours() === 0 && now.getMinutes() === 0) {
             getQuote();
             console.log("New quote of the day picked!");
         }
